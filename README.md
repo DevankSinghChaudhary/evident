@@ -23,3 +23,12 @@
     <img src="https://img.shields.io/badge/Follow%20Main%20Mission-FFFFFF?style=flat&logo=github&logoColor=181717" alt="GitHub">
   </a>
 </div>
+
+<br>
+
+Evident is research engine built for [vpipeline](https://www.github.com/devanksinghchaudhary/vpipeline). But can be used as standalone research engine.
+
+# Why separate from pipeline?
+
+I intended evident to be separate engine from pipeline so, I can maintain it with more efficiency. Not only evident but I will be releasing parts of VPipeline separately like evident.
+Like evident - research engine, quill - writing engine, etc
