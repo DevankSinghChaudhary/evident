@@ -10,10 +10,13 @@ requires-python = ">=3.14"
 dependencies = [
     "dotenv>=0.9.9",
     "langchain[openai]>=1.4.7",
+    "langgraph>=1.2.19",
+    "ollama>=0.6.3",
+    "tinyfish>=0.11.0",
 ]
 
 [project.scripts]
-evident = "evident:main"
+research = "evident:main"
 
 [build-system]
 requires = ["uv_build>=0.13.1,<0.14.0"]

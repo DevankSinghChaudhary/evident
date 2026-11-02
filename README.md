@@ -30,5 +30,9 @@ Evident is research engine built for [vpipeline](https://www.github.com/devanksi
 
 # Why separate from pipeline?
 
-I intended evident to be separate engine from pipeline so, I can maintain it with more efficiency. Not only evident but I will be releasing parts of VPipeline separately like evident.
-Like evident - research engine, quill - writing engine, etc
+I intended evident to be separate engine from pipeline so, I can maintain it with more efficiency. 
+Not only evident but I will be releasing parts of VPipeline separately like evident.
+
+Like evident - research engine, quill - writing engine, etc.
+
+
