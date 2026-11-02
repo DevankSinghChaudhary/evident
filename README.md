@@ -13,7 +13,13 @@
 </div>
 
 <div align="center">
-  <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/pypi/l" alt="PyPI - License"></a>
-  <a href="https://devanksinghchaudhary.github.io/projects/evident" target="_blank"><img src="https://img.shields.io/pypi/v/" alt="Version"></a>
-  <a href="https://github.com/devanksinghchaudhary/vpipeline" target="_blank"><img src="https://img.shields.io/badge/Follow the main mission?logo=github" alt="Github"></a>
+  <a href="https://opensource.org/licenses/MIT" target="_blank">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License">
+  </a>
+  <a href="https://devanksinghchaudhary.github.io/projects/evident" target="_blank">
+    <img src="https://img.shields.io/badge/Version-1.0.0-blue" alt="Version">
+  </a>
+  <a href="https://github.com/devanksinghchaudhary/vpipeline" target="_blank">
+    <img src="https://img.shields.io/badge/Follow%20Main%20Mission-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+  </a>
 </div>
