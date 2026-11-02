@@ -20,6 +20,6 @@
     <img src="https://img.shields.io/badge/Version-1.0.0-blue" alt="Version">
   </a>
   <a href="https://github.com/devanksinghchaudhary/vpipeline" target="_blank">
-    <img src="https://img.shields.io/badge/Follow%20Main%20Mission-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+    <img src="https://img.shields.io/badge/Follow%20Main%20Mission-FFFFFF?style=flat&logo=github&logoColor=181717" alt="GitHub">
   </a>
 </div>
