@@ -35,4 +35,6 @@ Not only evident but I will be releasing parts of VPipeline separately like evid
 
 Like evident - research engine, quill - writing engine, etc.
 
+# Start
 
+For getting started refer to this doc: [Getting Started](/docs/getting-started.md)
