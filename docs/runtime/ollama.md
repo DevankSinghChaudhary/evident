@@ -3,7 +3,7 @@ title: Ollama runtime
 description: Notes for using Ollama as Evident's current local model runtime.
 ---
 
-<div class="ev-kicker">Overview > Ollama runtime</div>
+<div class="ev-kicker">Setup > Ollama runtime</div>
 
 ---
 
