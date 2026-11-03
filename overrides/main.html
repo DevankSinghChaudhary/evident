@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{#
+  Keep Zensical's base layout and all built-in behavior. This override adds
+  only a small document-level theme-color hint; the CSS handles the actual
+  light/dark appearance.
+#}
+{% block extrahead %}
+  {{ super() }}
+  <meta name="theme-color" content="#171b1f">
+{% endblock %}
