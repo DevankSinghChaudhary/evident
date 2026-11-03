@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://www.devanksinghchaudhary.github.io/projects">
+  <a href="https://www.devanksinghchaudhary.github.io/evident">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset=".github/images/logo-dark.png">
       <source media="(prefers-color-scheme: light)" srcset=".github/images/logo-light.png">
@@ -37,4 +37,4 @@ Like evident - research engine, quill - writing engine, etc.
 
 # Start
 
-For getting started refer to this doc: [Getting Started](/docs/get-started.md)
+For getting started refer to this doc: [Getting Started](https://devanksinghchaudhary.github.io/evident/)
