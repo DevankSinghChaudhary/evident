@@ -3,10 +3,6 @@ title: Get started
 description: Prepare a Linux machine and the local model runtime for Evident.
 ---
 
-<div class="ev-kicker">Setup > Get started</div>
-
----
-
 # Get started
 
 This guide covers the current documented setup for Evident. The first version is being developed and tested on Linux.

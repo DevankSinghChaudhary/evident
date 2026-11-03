@@ -10,14 +10,16 @@ site_dir = "site"
 extra_css = ["stylesheets/extra.css"]
 
 nav = [
-  { "Overview" = [
-    "index.md",
-    "concepts.md",
-  ]},
+  { "Overview" = "index.md" },
+  "concepts.md",
+
   { "Setup" = [
     "get-started.md",
-    "runtime/ollama.md",
+    { "Runtime" = [
+      "runtime/ollama.md",
+    ]},
   ]},
+
   { "Technical reference" = [
     "reference/requirements.md",
     "reference/project-status.md",

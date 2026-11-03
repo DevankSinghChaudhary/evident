@@ -3,10 +3,6 @@ title: Core concepts
 description: The role Evident is designed to play in an AI research workflow.
 ---
 
-<div class="ev-kicker">Overview > Core concepts</div>
-
----
-
 # Core concepts
 
 Evident is intended to act as a dedicated research component inside a larger AI workflow.

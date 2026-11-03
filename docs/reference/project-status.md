@@ -3,10 +3,6 @@ title: Project status and scope
 description: What the current documentation establishes, and what remains implementation-dependent.
 ---
 
-<div class="ev-kicker">Technical reference > Project status</div>
-
----
-
 # Project status and scope
 
 Evident is an actively developing project. Its documentation should distinguish the intended role of the engine from features that have been fully implemented and tested.

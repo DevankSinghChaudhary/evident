@@ -3,10 +3,6 @@ title: Evident
 description: A decoupled research engine designed for AI systems and agents.
 ---
 
-<div class="ev-kicker">Overview > Evident</div>
-
----
-
 # Give AI systems a way to research.
 
 Evident is a research engine built for AI systems and agents. It is designed to take a research topic as input and produce structured research outputs that can be used independently or passed into a larger workflow.

@@ -3,10 +3,6 @@ title: System requirements
 description: Current documented hardware baseline for running Evident's model workflow.
 ---
 
-<div class="ev-kicker">Technical reference > System requirements</div>
-
----
-
 # System requirements
 
 The following table preserves the current hardware baseline recorded for the project. Actual resource use depends on the model, quantization, context size, and runtime.
