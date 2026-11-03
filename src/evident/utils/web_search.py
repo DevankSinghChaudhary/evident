@@ -113,7 +113,7 @@ async def search_queries(queries: list[str]):
         "organizations, or topics requiring web research. "
         "Pass multiple focused queries when researching multiple aspects of a topic. "
         "Queries are processed concurrently with a maximum of 10 searches at once. "
-        "Each search batch contains at most 10 queries."
+        "Each search batch contains at most 8 queries."
     ),
     return_direct=False,
 )

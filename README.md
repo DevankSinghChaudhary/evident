@@ -37,4 +37,4 @@ Like evident - research engine, quill - writing engine, etc.
 
 # Start
 
-For getting started refer to this doc: [Getting Started](/docs/getting-started.md)
+For getting started refer to this doc: [Getting Started](/docs/get-started.md)
