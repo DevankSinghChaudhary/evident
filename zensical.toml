@@ -24,6 +24,13 @@ nav = [
    "reference/requirements.md",
    "reference/project-status.md",
  ]},
+  { "Structure" = [ 
+    "structure/index.md",
+    "structure/prompts.md",
+    "structure/browser.md",
+    "structure/decision-model.md",
+  ] },
+
 ]
 
 copyright = '&copy; 2026 Evident. Released under the <a href="https://github.com/DevankSinghChaudhary/evident?tab=MIT-1-ov-file">MIT License</a>.'
@@ -45,6 +52,9 @@ logo = "assets/favicon.svg"
 features = [
   "navigation.path",
   "content.code.copy",
+  "navigation.tabs",
+  "navigation.top",
+  "navigation.tabs.sticky",
 ]
 
 [[project.theme.palette]]
