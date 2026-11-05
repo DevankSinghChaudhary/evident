@@ -10,20 +10,20 @@ site_dir = "site"
 extra_css = ["stylesheets/extra.css"]
 
 nav = [
-  { "Overview" = "index.md" },
-  "concepts.md",
+ { "Overview" = "index.md" },
+ "concepts.md",
 
-  { "Setup" = [
+ { "Setup" = [
     "get-started.md",
-    { "Runtime" = [
-      "runtime/ollama.md",
-    ]},
-  ]},
+   { "Runtime" = [
+     "runtime/ollama.md",
+   ]},
+ ]},
 
-  { "Technical reference" = [
-    "reference/requirements.md",
-    "reference/project-status.md",
-  ]},
+ { "Technical reference" = [
+   "reference/requirements.md",
+   "reference/project-status.md",
+ ]},
 ]
 
 copyright = '&copy; 2026 Evident. Released under the <a href="https://github.com/DevankSinghChaudhary/evident?tab=MIT-1-ov-file">MIT License</a>.'

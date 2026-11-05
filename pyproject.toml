@@ -10,8 +10,8 @@ requires-python = ">=3.14"
 dependencies = [
     "dotenv>=0.9.9",
     "langchain[openai]>=1.4.7",
-    "langgraph>=1.2.19",
     "ollama>=0.6.3",
+    "pydantic>=2.14.2",
     "tinyfish>=0.11.0",
 ]
 

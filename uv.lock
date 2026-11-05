@@ -172,8 +172,8 @@ source = { editable = "." }
 dependencies = [
     { name = "dotenv" },
     { name = "langchain", extra = ["openai"] },
-    { name = "langgraph" },
     { name = "ollama" },
+    { name = "pydantic" },
     { name = "tinyfish" },
 ]
 
@@ -186,8 +186,8 @@ dev = [
 requires-dist = [
     { name = "dotenv", specifier = ">=0.9.9" },
     { name = "langchain", extras = ["openai"], specifier = ">=1.4.7" },
-    { name = "langgraph", specifier = ">=1.2.19" },
     { name = "ollama", specifier = ">=0.6.3" },
+    { name = "pydantic", specifier = ">=2.14.2" },
     { name = "tinyfish", specifier = ">=0.11.0" },
 ]
 
