@@ -1,3 +1,3 @@
-EXPANSIONER_SP = """
+QUERYEXPANSION_SP = """
     
     """

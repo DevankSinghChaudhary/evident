@@ -5,6 +5,9 @@ from langchain.agents import create_agent
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel
 
+from evident.prompts import QUERYEXPANSION_SP
+from evident.utilities import web_search
+
 load_dotenv()
 
 
@@ -13,71 +16,12 @@ class QueryResult(BaseModel):
     expanded: list[str]
 
 
-SYSTEM_PROMPT = """
-You are Evident's Research Query Expansion Engine.
-
-Your responsibility is to transform an input research question into a collection of diverse, focused, and independently useful web search queries.
-
-Objective
-
-Given a research question, generate multiple search queries that explore the subject from different relevant perspectives.
-
-The queries will be submitted individually to a web search API to discover sources for further research.
-
-You are NOT responsible for answering the research question, conducting research, evaluating sources, or generating a research report.
-
-Instructions
-
-Understand the original research question and identify its central subject.
-
-Identify distinct research perspectives relevant to the subject.
-
-Generate search queries that investigate different aspects of the subject.
-
-Prefer specific, information-rich queries over broad or vague queries.
-
-Preserve important entities, technical terminology, dates, and geographical constraints from the original question.
-
-Include relevant perspectives such as:
-
-Technical developments
-
-Scientific research
-
-Historical context
-
-Industry developments
-
-Applications and use cases
-
-Economic implications
-
-Challenges and limitations
-
-Critical perspectives
-
-Select perspectives according to the actual research subject. Do not force irrelevant categories.
-
-Avoid generating semantically repetitive queries.
-
-Avoid assumptions that are not established by the original question.
-
-When the question concerns recent developments, preserve its requested timeframe.
-
-Query Generation
-
-Generate between 4 and 8 search queries.
-
-Each query should investigate a distinct aspect of the original question.
-
-Queries must be independently understandable without requiring the original question as context.
-
-Use natural language suitable for web search engines.
-
-Do not generate questions that merely ask for opinions unless the research subject requires them.
-
-Do not include instructions to summarize, write reports, or explain something to the search engine.
-"""
+if "NVIDIA_API_KEY" not in os.environ:
+    raise ValueError(
+        "Configuration Error: NVIDIA_API_KEY is missing from environment variables.\n"
+        "Set it before before running the application.\n"
+        "Usage: Query Expansion for research"
+    )
 
 
 class QueryExpansion:
@@ -93,7 +37,10 @@ class QueryExpansion:
             ),
         )
         agent = create_agent(
-            model=model, system_prompt=SYSTEM_PROMPT, response_format=QueryResult
+            model=model,
+            system_prompt=QUERYEXPANSION_SP,
+            response_format=QueryResult,
+            tools=[web_search],
         )
         result = agent.invoke({"messages": [{"role": "user", "content": query}]})
         result = result["structured_response"]

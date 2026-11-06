@@ -6,6 +6,12 @@ from tinyfish import TinyFish
 from evident.sources import QueryExpansion
 
 load_dotenv()
+
+if "TINYFISH_API" not in os.environ:
+    raise ValueError(
+        "Configuration Error: TINYFISH_API is missing from your environment variables.\n"
+        "Please set it before running the application."
+    )
 client = TinyFish(api_key=os.environ["TINYFISH_API"])
 
 
@@ -15,11 +21,4 @@ class Discovery:
 
     def source(self, query: str):
         expansion = self.query_expander.expand(query)
-        print(expansion)
-        print()
-        print(expansion.expanded)
-
-
-discover = Discovery()
-result = discover.source("How Black Hole Works?")
-print(result)
+        return expansion.expanded
