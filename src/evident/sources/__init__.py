@@ -1,1 +1,3 @@
-from .model import QueryExpansion
+from .discovery import Discovery
+
+__all__ = ["Discovery"]

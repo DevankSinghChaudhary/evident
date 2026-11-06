@@ -95,7 +95,7 @@ async def search_queries(queries: list[str]):
     if not queries:
         return []
 
-    batches = list(chunks(queries, 10))
+    batches = list(chunks(queries, 9))
 
     responses = []
 

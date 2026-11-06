@@ -14,6 +14,10 @@ load_dotenv()
 class QueryResult(BaseModel):
     base_query: str
     expanded: list[str]
+    covered_perspectives: list[str]
+    unexplored_perspectives: list[str]
+    knowledge_gaps: list[str]
+    reasoning_summary: list[str]
 
 
 if "NVIDIA_API_KEY" not in os.environ:
@@ -25,16 +29,14 @@ if "NVIDIA_API_KEY" not in os.environ:
 
 
 class QueryExpansion:
-    def __init__(self, model="nvidia/nemotron-3-ultra-550b-a55b"):
+    def __init__(self, model="codestral-2508"):
         self.model = model
 
-    def expand(self, query: str):
+    async def expand(self, query: str):
         model = ChatOpenAI(
             model=self.model,
-            api_key=os.environ["NVIDIA_API_KEY"],
-            base_url=os.environ.get(
-                "NVIDIA_BASE_URL", "https://integrate.api.nvidia.com/v1"
-            ),
+            api_key=os.environ["MISTRAL_API_KEY"],
+            base_url=os.environ.get("NVIDIA_BASE_URL", "https://api.mistral.ai/v1"),
         )
         agent = create_agent(
             model=model,
@@ -42,6 +44,12 @@ class QueryExpansion:
             response_format=QueryResult,
             tools=[web_search],
         )
-        result = agent.invoke({"messages": [{"role": "user", "content": query}]})
+        result = await agent.ainvoke({"messages": [{"role": "user", "content": query}]})
         result = result["structured_response"]
-        return result
+        return {
+            "queries": result.expanded,
+            "cp": result.covered_perspectives,
+            "up": result.unexplored_perspectives,
+            "kg": result.knowledge_gaps,
+            "rs": result.reasoning_summary,
+        }
