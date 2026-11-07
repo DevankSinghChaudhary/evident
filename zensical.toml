@@ -29,6 +29,10 @@ nav = [
     "structure/prompts.md",
     "structure/browser.md",
     "structure/decision-model.md",
+    { "Intelligence Access" = [ 
+    { "Home" = "structure/SIWC/index.md" },
+    { "SIWC" = "structure/SIWC/siwc.md" },
+    ] },
   ] },
 
 ]

@@ -29,14 +29,17 @@ if "NVIDIA_API_KEY" not in os.environ:
 
 
 class QueryExpansion:
-    def __init__(self, model="codestral-2508"):
+    def __init__(self, model="gemini-3.5-flash-lite"):
         self.model = model
 
     async def expand(self, query: str):
         model = ChatOpenAI(
             model=self.model,
-            api_key=os.environ["MISTRAL_API_KEY"],
-            base_url=os.environ.get("NVIDIA_BASE_URL", "https://api.mistral.ai/v1"),
+            api_key=os.environ["GOOGLE_API_KEY"],
+            base_url=os.environ.get(
+                "GOOGLE_BASE_URL",
+                "https://generativelanguage.googleapis.com/v1beta/openai/",
+            ),
         )
         agent = create_agent(
             model=model,

@@ -6,12 +6,13 @@ classes, and basically why? and how?.
 
 !!! note "Regarding explanation"
 
-    Explanation in section `Structure` will not be in-depth
-    but instead it will be all about how evident is structured
-    and what design decisions are taken in development process.
+    Explanation in section `Structure` will be in-depth in context
+    of evident. Here you will not get the knowledge of tools or ways
+    that evident uses. But HOW? that way or tool is used in the evident.
 
 ### Highlights
 
-- [Prompts](./prompts.md)
-- [Browser](./browser.md)
-- [Decision Model](./decision-model.md)
+- [Prompts](./prompts.md): How prompts are structured
+- [Browser](./browser.md): How custom browser is structured for web access
+- [Decision Model](./decision-model.md): Which decision model is used and how
+- [Intelligence Access](./SIWC/index.md): Exploring the how evident access LLM(s)
