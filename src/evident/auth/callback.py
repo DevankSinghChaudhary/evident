@@ -1,6 +1,18 @@
-import json
+from __future__ import annotations
+
+import base64
+import hashlib
+import secrets
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import parse_qs, urlparse
+
+code_verifier = secrets.token_urlsafe(43)
+code_challenge = (
+    base64.urlsafe_b64encode(hashlib.sha256(code_verifier.encode("ascii")).digest())
+    .rstrip(b"=")
+    .decode("ascii")
+)
+CCM = "S256"
 
 ADDRESS = "127.0.0.1"
 PORT = 0
@@ -17,21 +29,10 @@ class CallbackHandler(BaseHTTPRequestHandler):
                 b"<h1>Authentication Successful. <br> You can close this window.</h1>"
             )
             data = parse_qs(url.query)
-            with open("data.json", "w", encoding="utf-8") as file:
-                json.dump(data, file, indent=2)
+            return data
         else:
             self.send_error(404, "Not Found")
 
 
-server = HTTPServer((ADDRESS, PORT), CallbackHandler)
-port = server.server_address[1]
-server.serve_forever()
-
-REDIRECT_URI = f"http://{ADDRESS}:{PORT}/auth/callback"
-
-
-from platformdirs import PlatformDirs
-
-dirs = PlatformDirs(appname="evident", appauthor=False)
-
-print(dirs.user_config_dir)
+def CreateCallbackServer():
+    return HTTPServer((ADDRESS, PORT), CallbackHandler)
