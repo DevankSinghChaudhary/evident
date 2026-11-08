@@ -11,6 +11,7 @@ dependencies = [
     "dotenv>=0.9.9",
     "langchain[openai]>=1.4.7",
     "ollama>=0.6.3",
+    "platformdirs>=4.14.5",
     "pydantic>=2.14.2",
     "tinyfish>=0.11.0",
 ]
