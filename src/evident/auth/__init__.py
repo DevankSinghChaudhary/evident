@@ -1,1 +1,1 @@
-from .callback import CreateCallbackServer
+from .method import method
