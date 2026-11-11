@@ -1,3 +1,7 @@
+"""
+Authentication pipeline.
+"""
+
 from __future__ import annotations
 
 import webbrowser
@@ -18,4 +22,11 @@ class AuthCodex:
                 login = codex.login_chatgpt()
                 webbrowser.open(login.auth_url)
                 print(login.wait().success)
+            spinner.stop()
+
+    def logout(self):
+        with Codex() as codex:
+            spinner.start()
+            if codex.account().account is not None:
+                codex.logout()
             spinner.stop()
