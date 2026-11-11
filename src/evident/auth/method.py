@@ -13,7 +13,7 @@ METHODS = [
 ]
 
 
-def method():
+def auth_method():
     auth_method = questionary.select(
         "Select an authentication method:",
         choices=METHODS,
