@@ -5,6 +5,7 @@ import time
 from openai_codex import Codex, CodexConfig
 from pydantic import BaseModel, ConfigDict, Field
 
+from evident.auth import AuthCodex
 from evident.prompts import QUERY_EXPANSION_BASE, QUERY_EXPANSION_DEV
 
 
@@ -29,19 +30,23 @@ class Research:
             self.codex = Codex(config=CodexConfig(config_overrides=overrides))
 
     def query(self, query: str):
-        start = time.time()
         if self.provider == "codex":
             with self.codex as codex:
                 thread = codex.thread_start(
                     developer_instructions=QUERY_EXPANSION_DEV,
                     base_instructions=QUERY_EXPANSION_BASE,
                 )
-                result = thread.run(query, output_schema=schema)
-                expanded = QueryExpansionSchema.model_validate_json(
-                    result.final_response
-                )
-                print(expanded)
-                print(f"Timed: {time.time() - start:.2f}s")
+                codex = AuthCodex()
+                models = codex.models()
+                for model in models.values():
+                    start = time.time()
+                    print(f"Model: {model}")
+                    result = thread.run(query, model=model, output_schema=schema)
+                    expanded = QueryExpansionSchema.model_validate_json(
+                        result.final_response
+                    )
+                    print(expanded)
+                    print(f"Timed: {time.time() - start:.2f}s")
 
 
 research = Research(provider="codex")

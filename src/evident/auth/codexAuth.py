@@ -30,3 +30,15 @@ class AuthCodex:
             if codex.account().account is not None:
                 codex.logout()
             spinner.stop()
+
+    def models(self):
+        with Codex() as codex:
+            response = codex.models()
+            models = response.data
+            return {
+                model.display_name: model.id for model in models if not model.hidden
+            }
+
+
+codex = AuthCodex()
+print(codex.models())
