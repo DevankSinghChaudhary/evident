@@ -31,7 +31,7 @@ class Research:
         self,
         provider: Literal[
             "codex",
-            "openai",
+            "openai-compatible",
         ],
         model: str = DEFAULT_MODEL,
         base_url: str | None = None,
@@ -90,7 +90,3 @@ class Research:
 
             result = agent.invoke({"messages": [{"role": "user", "content": query}]})
             return result["structured_response"]
-
-
-evident = Research(provider="codex", web_search=True)
-print(evident.query("How Gravity Lensing works?"))
