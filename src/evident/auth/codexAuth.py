@@ -38,7 +38,3 @@ class AuthCodex:
             return {
                 model.display_name: model.id for model in models if not model.hidden
             }
-
-
-codex = AuthCodex()
-print(codex.models())

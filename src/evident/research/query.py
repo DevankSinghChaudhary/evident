@@ -1,12 +1,16 @@
 from __future__ import annotations
 
 import time
+from typing import Literal
 
+from langchain.agents import create_agent
+from langchain_openai import ChatOpenAI
 from openai_codex import Codex, CodexConfig
 from pydantic import BaseModel, ConfigDict, Field
 
 from evident.auth import AuthCodex
 from evident.prompts import QUERY_EXPANSION_BASE, QUERY_EXPANSION_DEV
+from evident.utilities import web_search
 
 
 class QueryExpansionSchema(BaseModel):
@@ -15,12 +19,30 @@ class QueryExpansionSchema(BaseModel):
 
 
 schema = QueryExpansionSchema.model_json_schema()
+codex = AuthCodex()
+models = codex.models()
+DEFAULT_MODEL = list(models.values())[
+    0
+]  # Default model: GPT 6 Luna for free subscription
 
 
 class Research:
-    def __init__(self, provider: str, web_search: bool = False):
+    def __init__(
+        self,
+        provider: Literal[
+            "codex",
+            "openai",
+        ],
+        model: str = DEFAULT_MODEL,
+        base_url: str | None = None,
+        api_key: str | None = None,
+        web_search: bool = False,
+    ):
         self.provider = provider.lower().strip()
         self.web_search = web_search
+        self.model = model
+        self.base_url = base_url
+        self.api_key = api_key
 
         if self.provider == "codex":
             overrides = (
@@ -36,18 +58,39 @@ class Research:
                     developer_instructions=QUERY_EXPANSION_DEV,
                     base_instructions=QUERY_EXPANSION_BASE,
                 )
-                codex = AuthCodex()
-                models = codex.models()
-                for model in models.values():
-                    start = time.time()
-                    print(f"Model: {model}")
-                    result = thread.run(query, model=model, output_schema=schema)
-                    expanded = QueryExpansionSchema.model_validate_json(
-                        result.final_response
-                    )
-                    print(expanded)
-                    print(f"Timed: {time.time() - start:.2f}s")
+                start = time.perf_counter()
+                print(f"Model: {self.model}")
+                result = thread.run(query, model=self.model, output_schema=schema)
+                expanded = QueryExpansionSchema.model_validate_json(
+                    result.final_response
+                )
+                end = time.perf_counter()
+                elapsed = end - start
+                print(f"Codex time: {elapsed:.2f}s")
+                return expanded
+
+        if self.provider == "openai":
+            model = ChatOpenAI(
+                model=self.model,
+                base_url=self.base_url,
+                api_key=self.api_key,
+            )
+            if self.web_search:
+                agent = create_agent(
+                    model=model,
+                    system_prompt=f"{QUERY_EXPANSION_DEV} \n \n {QUERY_EXPANSION_BASE}",
+                    response_format=QueryExpansionSchema,
+                    tools=[web_search],
+                )
+            agent = create_agent(
+                model=model,
+                system_prompt=f"{QUERY_EXPANSION_DEV} \n \n {QUERY_EXPANSION_BASE}",
+                response_format=QueryExpansionSchema,
+            )
+
+            result = agent.invoke({"messages": [{"role": "user", "content": query}]})
+            return result["structured_response"]
 
 
-research = Research(provider="codex")
-result = research.query("How gravity lensing work?")
+evident = Research(provider="codex", web_search=True)
+print(evident.query("How Gravity Lensing works?"))
