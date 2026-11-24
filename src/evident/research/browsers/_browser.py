@@ -1,4 +1,5 @@
-from evident.research.browser.decision import Decision
+from browser.core import Agent
+from evident.research.browsers.decision import Decision
 
 decision = Decision(model="tev1:4b")
 
@@ -16,4 +17,8 @@ result = decision.call(
     },
 )
 
-print(result)
+with Agent(
+    "https://www.google.com/maps", "Find me Jaipur on the maps.", jev=False
+) as agent:
+    for state in agent.run():
+        print(state["elapsed_ms"], state["status"])

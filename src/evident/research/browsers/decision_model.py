@@ -5,7 +5,7 @@ from typing import Literal
 import ollama
 import questionary
 
-from evident.research.browser.ollama_models import decision_models, download_model
+from evident.research.browsers.ollama_models import decision_models, download_model
 
 DMETHODS = Literal["choice", "noul", "score"]
 DEFAULT = "tev1:4b"
@@ -85,7 +85,5 @@ class Decision:
                 }
             },
         )
-        return response.answers["category"]
-
-
-systemone = Decision("ihphv")
+        return response["answers"].get("operation", {})
+        # return response.answers["category"]

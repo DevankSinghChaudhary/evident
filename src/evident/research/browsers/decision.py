@@ -6,7 +6,7 @@ from typing import Literal, TypeAlias
 import ollama
 import questionary
 
-from evident.research.browser.ollama_models import decision_models
+from evident.research.browsers.ollama_models import decision_models
 
 DecisionMethod: TypeAlias = Literal["choice", "noul", "score"]
 
@@ -276,4 +276,5 @@ class Decision:
         except (ollama.RequestError, ollama.ResponseError) as exc:
             raise DecisionError(f"System One request failed: {exc}") from exc
 
-        return response.answers[QUESTION_ID]
+        return response["answers"]
+        # return response.answers[QUESTION_ID]

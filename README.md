@@ -38,3 +38,6 @@ Like evident - research engine, quill - writing engine, etc.
 # Start
 
 For getting started refer to this doc: [Getting Started](https://devanksinghchaudhary.github.io/evident/)
+
+
+_See [CITATIONS](./CITATIONS) for third-party software attributions and licenses._
