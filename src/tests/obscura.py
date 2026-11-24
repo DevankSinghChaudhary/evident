@@ -23,12 +23,6 @@ def main():
 
         print("Link count:", page.locator("a").count())
 
-        # print("First paragraph:", page.locator("p").first.inner_text())
-
-        # print("Link text:", page.locator("a").inner_text())
-
-        # print("Link URL:", page.locator("a").get_attribute("href"))
-
         # JavaScript execution
         print("JS title:", page.evaluate("() => document.title"))
 
@@ -39,7 +33,6 @@ def main():
         )
 
         # Click an actual link
-        page.locator("a").click()
 
         print("URL after click:", page.url)
         print("Title after click:", page.title())

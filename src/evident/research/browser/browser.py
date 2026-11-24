@@ -6,14 +6,10 @@ decision = Decision(model="tev1:4b")
 decision.setup(interactive=True)
 
 result = decision.call(
-    output_method="choice",
+    output_method="noul",
     state="A webpage contains a documentation article about Python.",
     instruction="Classify the type of webpage.",
-    criteria={
-        "documentation": "Technical documentation or guides",
-        "blog": "An article or personal blog post",
-        "other": "Anything else",
-    },
+    criteria=
 )
 
 print(result)
