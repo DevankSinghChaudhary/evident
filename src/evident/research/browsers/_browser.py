@@ -18,7 +18,11 @@ result = decision.call(
 )
 
 with Agent(
-    "https://www.google.com/maps", "Find me Jaipur on the maps.", jev=False
+    "https://www.google.com/maps",
+    "Find me Restaurent in Jaipur on the maps."
+    "Stop when found 1st restaurent in Raja-Park area.",
+    jev=False,
+    codex=True,
 ) as agent:
     for state in agent.run():
         print(state["elapsed_ms"], state["status"])

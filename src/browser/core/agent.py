@@ -10,12 +10,15 @@ from .questions import MAX_STEPS
 
 
 class Agent:
-    def __init__(self, url, goals, *, record_dir=None, screenshots=False, jev=False):
+    def __init__(
+        self, url, goals, *, record_dir=None, screenshots=False, jev=False, codex=True
+    ):
         task = goals.strip() if isinstance(goals, str) else "\n".join(goals).strip()
         if not task:
             raise ValueError("Supply a task")
         plan = [task]
         self.jev = jev
+        self.codex = codex
         self.pending_text = None
         self.browser = Browser(url)
         self.record_dir = Path(record_dir) if record_dir else None
@@ -125,7 +128,7 @@ class Agent:
                 if self.pending_text and self.pending_text[0] == context:
                     _, text, helper = self.pending_text
                 else:
-                    text, helper = field_text(context)
+                    text, helper = field_text(context, codex=self.codex)
                     self.pending_text = (context, text, helper)
                     state["text_calls"].append(
                         {**helper, "field": action["label"], "value": text}
